@@ -1,0 +1,45 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+int main(){
+
+    vector<int> x(24), h(24);
+    ifstream f_read("C:\\Users\\Tymoteusz\\Desktop\\4 semestr\\cps\\lab00\\x_h_sign.txt");
+
+    for(int i=0; i <24; ++i){
+        f_read >> x[i] >> h[i];
+    }
+
+    /*
+    for(int i=0; i < x.size(); i++)
+      std::cout << x.at(i) << ' ';
+    */
+
+    vector<int> y(47);
+    for(int i =0; i<47; i++){
+        int suma = 0;
+        for(int k =0; k<24; k++){
+            if (((i-k)>=0) && ((i-k) < 24)){
+                suma = suma + h[k]*x[i-k];
+            }
+        }
+        y[i] = suma;
+    }
+
+    for(int i=0; i < y.size(); i++)
+      std::cout << y.at(i) << ' ';
+
+    ofstream outFile("C:\\Users\\Tymoteusz\\Desktop\\4 semestr\\cps\\lab00\\x_h_conv.txt");
+    if( ! outFile )	{
+		cout << "Error opening file for output" << endl ;
+		return -1 ;
+	}
+    for(int i=0; i < y.size(); i++){
+        outFile << y.at(i) << endl;
+    }
+    outFile.close();
+
+    return 0;
+}
