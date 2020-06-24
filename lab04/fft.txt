@@ -1,0 +1,8 @@
+złożoność obliczeniowa
+
+dft O(N*N)
+
+rekurencja
+fft O(Nlog2(N)), bo musi byc wielokrotnoscia 2 
+
+rekurencja jest okej ale jak nie ma za dużo elementów bo pamięć mogę zająć
